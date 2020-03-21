@@ -498,7 +498,7 @@ async function run() {
     const repoToken = core.getInput('repo-token');
     const octokit = new github.GitHub(repoToken);
 
-    const repo = await octokit.pulls.get({
+    const repo = await octokit.repos.get({
       owner: 'weppos',
       repo: 'test-action',
     });
