@@ -11,6 +11,7 @@ async function run() {
     const eventPayload = tools.context.payload;
     console.log(eventPayload);
     const { issue: issue } = eventPayload;
+    console.log(issue);
     const { body: issueBody } = issue;
 
     let labels = [];
