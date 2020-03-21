@@ -5,9 +5,15 @@ const github = require('@actions/github');
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
-    console.log(`Running ...`)
+    const repoToken = core.getInput('repo-token');
+    const octokit = new github.GitHub(repoToken);
 
-    core.setOutput('time', new Date().toTimeString());
+    const repo = await octokit.pulls.get({
+      owner: 'weppos',
+      repo: 'test-action',
+    });
+
+    console.log(repo);
   }
   catch (error) {
     core.setFailed(error.message);

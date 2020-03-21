@@ -1,12 +1,5 @@
 name: 'Custom'
 description: 'This is a custom action.'
-inputs:
-  void:
-    description: 'Nothing'
-    required: false
-outputs:
-  time:
-    description: 'The message to output'
 runs:
   using: 'node12'
   main: 'dist/index.js'
