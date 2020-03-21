@@ -9,23 +9,22 @@ async function run() {
     const tools = new Toolkit()
 
     const eventPayload = tools.context.payload;
-    console.log(eventPayload);
     const { repository: repo } = eventPayload;
     const { issue: issue } = eventPayload;
 
     const { body: issueBody } = issue;
     let labels = [];
     if (issueBody.includes("bear")) {
-      labels.push("l1");
+      labels.push("bear");
     }
     if (issueBody.includes("bird")) {
-      labels.push("l2");
+      labels.push("bird");
     }
     if (issueBody.includes("beer")) {
-      labels.push("l3");
+      labels.push("beer");
     }
     if (issueBody.includes("beard")) {
-      labels.push("l4");
+      labels.push("beard");
     }
 
     const octokit = new github.GitHub(repoToken);
@@ -44,7 +43,6 @@ async function run() {
 
     // console.log(repo);
     console.log(labels);
-    console.log(tools.context.payload);
   }
   catch (error) {
     core.setFailed(error.message);
