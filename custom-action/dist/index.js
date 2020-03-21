@@ -992,7 +992,7 @@ async function run() {
 
     const eventPayload = tools.context.payload;
     console.log(eventPayload);
-    const { issue } = eventPayload;
+    const { issue: issue } = eventPayload;
     const { body: issueBody } = issue;
 
     let labels = [];
