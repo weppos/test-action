@@ -1,6 +1,7 @@
 name: "custom-action-test"
 on:
-  - push
+  issues:
+    types: [opened, edited, closed]
 
 jobs:
   units:

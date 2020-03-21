@@ -490,6 +490,7 @@ module.exports = require("os");
 
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
+const process = __webpack_require__(765);
 
 
 // most @actions toolkit packages have async methods
@@ -504,6 +505,7 @@ async function run() {
     });
 
     console.log(repo);
+    console.log(process.env);
   }
   catch (error) {
     core.setFailed(error.message);
@@ -8894,6 +8896,13 @@ function removeHook (state, name, method) {
   state.registry[name].splice(index, 1)
 }
 
+
+/***/ }),
+
+/***/ 765:
+/***/ (function(module) {
+
+module.exports = require("process");
 
 /***/ }),
 

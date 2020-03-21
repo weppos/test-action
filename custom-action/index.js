@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const process = require('process');
 
 
 // most @actions toolkit packages have async methods
@@ -14,6 +15,7 @@ async function run() {
     });
 
     console.log(repo);
+    console.log(process.env);
   }
   catch (error) {
     core.setFailed(error.message);
