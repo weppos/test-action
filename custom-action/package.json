@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "custom-action",
   "version": "1.0.0",
-  "description": "This is a javascript action.",
+  "description": "This is a custom action.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js",
