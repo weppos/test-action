@@ -8,7 +8,7 @@ async function run() {
     console.log(`Running ...`)
 
     core.setOutput('time', new Date().toTimeString());
-  } 
+  }
   catch (error) {
     core.setFailed(error.message);
   }

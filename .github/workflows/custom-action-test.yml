@@ -1,0 +1,17 @@
+name: "custom-action-test"
+on:
+  - push
+
+jobs:
+  units:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: cd javascript-action && npm ci
+    - run: cd javascript-action && npm test
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./custom-action
