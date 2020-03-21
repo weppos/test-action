@@ -1014,7 +1014,7 @@ async function run() {
     await octokit.issues.replaceLabels({
       owner: repo.owner.login,
       repo: repo.name,
-      issue_number: issue.id,
+      issue_number: issue.number,
       labels: labels,
     });
 
