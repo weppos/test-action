@@ -10,10 +10,10 @@ async function run() {
 
     const eventPayload = tools.context.payload;
     console.log(eventPayload);
+    const { repository: repo } = eventPayload;
     const { issue: issue } = eventPayload;
-    console.log(issue);
-    const { body: issueBody } = issue;
 
+    const { body: issueBody } = issue;
     let labels = [];
     if (issueBody.includes("bear")) {
       labels.push("l1");
@@ -30,8 +30,8 @@ async function run() {
 
     const octokit = new github.GitHub(repoToken);
     await octokit.issues.replaceLabels({
-      owner: issue.repository.owner.login,
-      repo: issue.repository.name,
+      owner: repo.owner.login,
+      repo: repo.name,
       issue_number: issue.id,
       labels: labels,
     });
