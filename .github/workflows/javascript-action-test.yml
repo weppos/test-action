@@ -1,4 +1,4 @@
-name: "units-test"
+name: "javascript-action-test"
 on:
   pull_request:
   push:
