@@ -991,6 +991,7 @@ async function run() {
     const tools = new Toolkit()
 
     const eventPayload = tools.context.payload;
+    console.log(eventPayload);
     const { issue } = eventPayload;
     const { body: issueBody } = issue;
 
@@ -1009,11 +1010,6 @@ async function run() {
     }
 
     const octokit = new github.GitHub(repoToken);
-    const { data: repo } = await octokit.repos.get({
-      owner: 'weppos',
-      repo: 'test-action',
-    });
-
     await octokit.issues.replaceLabels({
       owner: issue.repository.owner.login,
       repo: issue.repository.name,
