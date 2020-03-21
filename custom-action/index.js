@@ -6,15 +6,47 @@ const { Toolkit } = require('actions-toolkit')
 async function run() {
   try { 
     const repoToken = core.getInput('repo-token');
-    const octokit = new github.GitHub(repoToken);
     const tools = new Toolkit()
 
+    const eventPayload = tools.context.payload;
+    const { issue } = eventPayload;
+    const { body: issueBody } = issue;
+
+    let labels = [];
+    if (issueBody.includes("bear")) {
+      labels.push("l1");
+    }
+    if (issueBody.includes("bird")) {
+      labels.push("l2");
+    }
+    if (issueBody.includes("beer")) {
+      labels.push("l3");
+    }
+    if (issueBody.includes("beard")) {
+      labels.push("l4");
+    }
+
+    const octokit = new github.GitHub(repoToken);
     const { data: repo } = await octokit.repos.get({
       owner: 'weppos',
       repo: 'test-action',
     });
 
-    console.log(repo);
+    await octokit.issues.replaceLabels({
+      owner: issue.repository.owner.login,
+      repo: issue.repository.name,
+      issue_number: issue.id,
+      labels: labels,
+    });
+
+    // const octokit = new github.GitHub(repoToken);
+    // const { data: repo } = await octokit.repos.get({
+    //   owner: 'weppos',
+    //   repo: 'test-action',
+    // });
+
+    // console.log(repo);
+    console.log(labels);
     console.log(tools.context.payload);
   }
   catch (error) {
