@@ -7,7 +7,8 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: weppos/test-action@v1
+      uses: ./greeter/
+      # uses: weppos/test-action@v1
       with:
         who-to-greet: 'Me'
     - name: Get the output time
