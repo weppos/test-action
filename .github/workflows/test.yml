@@ -12,10 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: npm ci
-      working-directory: ${{ env.CURRENT_WORKSPACE }}/javascript-action
-    - run: npm test
-      working-directory: ${{ env.CURRENT_WORKSPACE }}/javascript-action
+    - run: cd javascript-action && npm ci
+    - run: cd javascript-action npm test
 
   # test action works running from the graph  
   test:
