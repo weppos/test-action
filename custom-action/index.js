@@ -1,13 +1,13 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const process = require('process');
-
+const { Toolkit } = require('actions-toolkit')
 
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
     const repoToken = core.getInput('repo-token');
     const octokit = new github.GitHub(repoToken);
+    const tools = new Toolkit()
 
     const { data: repo } = await octokit.repos.get({
       owner: 'weppos',
@@ -15,7 +15,7 @@ async function run() {
     });
 
     console.log(repo);
-    console.log(process.env);
+    console.log(tools.context.payload);
   }
   catch (error) {
     core.setFailed(error.message);
