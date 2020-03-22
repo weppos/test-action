@@ -8,8 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: cd javascript-action && npm ci
-    - run: cd javascript-action && npm test
+    - run: |
+        cd javascript-action
+        npm ci
+        npm test
 
   test:
     runs-on: ubuntu-latest
